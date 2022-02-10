@@ -1,0 +1,96 @@
+{% load static %}
+<!-- <!DOCTYPE html>-->
+<html lang="eng">
+<head>
+<title>Sports Shop</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hom/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+  <style>
+  .abcd{
+    height:30%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    }
+   </style>
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="abcd" style="background-image:url({% static 'hom/images/demo/backgrounds/sbg.jpg' %});">
+  <!-- ################################################################################################ -->
+  <header id="header" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <div id="logo" class="one_quarter first">
+      <h1 style="color:white"><a href="/">Sports Land</a></h1>
+      <p style="color:white">The Land of Sports Products </p>
+    </div>
+
+  </header>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <section id="navwrapper" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <nav id="mainav">
+      <ul class="clear">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a class="drop" style="color:green;" href="#">Filter</a>
+          <ul>{% for i in ct %}
+            <li><a href="{{i.get_url}}">{{i.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        {% if user.is_authenticated %}
+        <li><br>Hello, {{user.username}}</li>
+        <li class="active"><a href="accounts/logout">Logout</a></li>
+        {% else %}
+        <li class="active"><a href="accounts/register">Register</a></li>
+        <li class="active"><a href="accounts/login">Login</a></li>
+        {% endif %}
+
+          <ul>
+            <li><a href="#">Level 2</a></li>
+            <li><a class="drop" href="#">Level 2 + Drop</a>
+              <ul>
+                <li><a href="#">Level 3</a></li>
+                <li><a href="#">Level 3</a></li>
+                <li><a href="#">Level 3</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Level 2</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- ################################################################################################ -->
+<!--    <div id="searchform">-->
+<!--      <div>-->
+<!--        <form action="#" method="post">-->
+<!--          <fieldset>-->
+<!--            <legend>Quick Search:</legend>-->
+<!--            <input type="text" placeholder="Enter search term&hellip;">-->
+<!--            <button type="submit"><i class="fas fa-search"></i></button>-->
+<!--          </fieldset>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+
+
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static  'hom/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static  'hom/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static  'hom/layout/scripts/jquery.mobilemenu.js' %}"></script>
+
+</body>
+</html>
+{% block content %}
+  {% endblock %}

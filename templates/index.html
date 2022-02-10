@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--<!DOCTYPE html>-->
+
+<div id="pageintro" class="hoc clear">
+    <!-- ################################################################################################ -->
+    <article>
+<div  id="navwrapper" class="wrapper row5">
+   <div id="searchform" class="search">
+      <div>
+        <form action="{% url 'search' %} " method="GET">
+            {% csrf_token %}
+          <fieldset>
+            <legend>Quick Search:</legend>
+            <input type="text" placeholder="Enter search term&hellip;" name="q">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+</div>
+    </article>
+  <br>
+  <article>
+      <h3 class="heading" style="color:black" >Sports land</h3>
+      <p style="color:black">Your One Stop Destination for Ordering Quality Sports Products</p>
+    </article>
+  </div>
+</div>
+
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <section id="introblocks">
+      <ul class="nospace group">
+        {% for i in pg.object_list %}
+        <li class="one_third">
+          <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="height:400;width:400;"></a>
+            <figcaption>
+              <h3 class="heading">{{i.name}}</h3>
+              <p>{{i.desc|truncatechars:50}}</p>
+
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+  </section>
+</div>
+<!-- ################################################################################################ -->
+<center>
+    {% for p in pg.paginator.page_range %}
+    <a href="?page={{p}}" class="btn btn-light btn-sm {% if pg.number == p %} active {% endif %}">{{p}}</a>
+       {% endfor %}
+
+</center>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="bgded overlay row4" style="background-image:url('{% static  'hom/images/demo/backgrounds/ftr1.png' %}');">
+  <footer id="footer" class="hoc clear">
+
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static  'hom/layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static  'hom/layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static  'hom/layout/scripts/jquery.mobilemenu.js' %}"></script>
+</body>
+</html>
+{% endblock %}

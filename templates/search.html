@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <section id="introblocks">
+      <ul class="nospace group">
+        {% for i in pr %}
+        <li class="one_third">
+          <br>
+          <br>
+          <figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="height:400;width:400;"></a>
+            <figcaption>
+              <h3 class="heading">{{i.name}}</h3>
+              <br><b>Price:{{i.price}}Rs</b>
+              <p>{{i.desc}}</p>
+
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+</body>
+</html>
+{% endblock %}
